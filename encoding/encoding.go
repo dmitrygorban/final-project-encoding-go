@@ -34,12 +34,12 @@ func (j *JSONData) Encoding() error {
 		return err
 	}
 
-	var config models.DockerCompose
-	if err = json.Unmarshal(bytes, &config); err != nil {
+	var config JSONData
+	if err = json.Unmarshal(bytes, &config.DockerCompose); err != nil {
 		return err
 	}
 
-	yamlConfig, err := yaml.Marshal(&config)
+	yamlConfig, err := yaml.Marshal(&config.DockerCompose)
 	if err != nil {
 		return err
 	}
@@ -65,12 +65,12 @@ func (y *YAMLData) Encoding() error {
 		return err
 	}
 
-	var config models.DockerCompose
-	if err = yaml.Unmarshal(bytes, &config); err != nil {
+	var config YAMLData
+	if err = yaml.Unmarshal(bytes, &config.DockerCompose); err != nil {
 		return err
 	}
 
-	jsonConfig, err := json.Marshal(&config)
+	jsonConfig, err := json.Marshal(&config.DockerCompose)
 	if err != nil {
 		return err
 	}
